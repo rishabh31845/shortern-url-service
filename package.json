@@ -1,0 +1,79 @@
+{
+  "name": "tier-shorten-url-service",
+  "version": "1.0.0",
+  "description": "This service handles creation of tiny urls and track of site visits",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only ./src/server/index.ts",
+    "prod": "node ./src/server/index.js",
+    "test": "jest --forceExit --coverage --verbose --runInBand",
+    "coverage": "jest --forceExit --coverage --verbose --runInBand",
+    "test-comment": "jest --forceExit test/routes/commentRouter --runInBand",
+    "watch-test": "npm run test -- --watchAll",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
+  },
+  "author": "Rishabh Gandhi",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-http-context": "^1.2.3",
+    "helmet": "^3.20.1",
+    "http-status-codes": "^1.3.2",
+    "makeerror": "^1.0.11",
+    "moment": "^2.29.2",
+    "pg": "^8.3.3",
+    "reflect-metadata": "^0.1.13",
+    "spdy": "^4.0.2",
+    "supports-color": "6.1.0",
+    "swagger-jsdoc": "^3.4.0",
+    "swagger-ui-express": "^4.1.1",
+    "typeorm": "^0.2.22",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.2.0",
+    "winston-splunk-httplogger": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.0.1",
+    "@types/express": "^4.17.0",
+    "@types/helmet": "^0.0.44",
+    "@types/jest": "^24.0.17",
+    "@types/node": "^12.7.2",
+    "@types/spdy": "^3.4.4",
+    "@types/swagger-jsdoc": "^3.0.2",
+    "@types/swagger-ui-express": "^3.0.1",
+    "@types/validator": "^10.11.3",
+    "dotenv": "^8.1.0",
+    "gts": "^3.1.0",
+    "husky": "^3.1.0",
+    "jest": "^27.5.1",
+    "jest-sonar-reporter": "^2.0.0",
+    "lint-staged": "^10.0.0-1",
+    "node-mocks-http": "^1.8.1",
+    "prettier": "1.18.2",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^1.0.0-pre.41",
+    "typescript": "^3.9.10"
+  },
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "clover.xml",
+    "indent": 4
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "npm run fix",
+      "npm run check",
+      "git add"
+    ]
+  }
+}
